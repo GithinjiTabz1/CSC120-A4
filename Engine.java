@@ -16,10 +16,10 @@ public class Engine implements EngineRequirements {
      * @param currentFuellevel The current fuel level of the engine.
      * @param maxFuelLevel The maximum fuel level the engine can hold.
      */
-    public Engine(FuelType f, double currentFuellevel, double maxFuelLevel) {
+    public Engine(FuelType f, double currentFuellevel) {
         this.f = f;
         this.currentFuellevel = currentFuellevel;
-        this.maxFuelLevel = maxFuelLevel;
+        this.maxFuelLevel = currentFuellevel;
     }
 
     /**
@@ -27,7 +27,7 @@ public class Engine implements EngineRequirements {
      * 
      * @return The fuel type of the engine.
      */
-    public FuelType getfuelType() {
+    public FuelType getFuelType() {
         return this.f;
     }
 
@@ -36,7 +36,7 @@ public class Engine implements EngineRequirements {
      * 
      * @return The maximum fuel level of the engine.
      */
-    public double getmaxFuel() {
+    public double getMaxFuel() {
         return this.maxFuelLevel;
     }
 
@@ -45,7 +45,7 @@ public class Engine implements EngineRequirements {
      * 
      * @return The current fuel level of the engine.
      */
-    public double getcurrentFuel() {
+    public double getCurrentFuel() {
         return this.currentFuellevel;
     }
 
@@ -87,22 +87,10 @@ public class Engine implements EngineRequirements {
      * @param args Command-line arguments.
      */
     public static void main(String[] args) {
-        Engine myEngine = new Engine(FuelType.ELECTRIC, 0., 100.);  // Create an engine with ELECTRIC fuel type and 0 fuel
-        System.out.println(myEngine);  // Print the engine's initial state
-        myEngine.refuel();  // Refuel the engine
-        System.out.println("After refueling: " + myEngine);  // Print the engine's state after refueling
-        while (myEngine.go()) {  // Simulate the engine going
-            System.out.println("Choo choo!");  // Output each time the engine goes
+        Engine myEngine = new Engine(FuelType.ELECTRIC, 100.0);
+        while (myEngine.go()) {
+            System.out.println("Choo choo!");
         }
-        System.out.println("Out of fuel.");  // Output when the engine runs out of fuel
-        myEngine.go();  // Try to go when out of fuel
-        System.out.println("Remaining: " + myEngine);  // Print the engine's state
-
-        Engine myOtherEngine = new Engine(FuelType.STEAM, 50., 100.);  // Create another engine with STEAM fuel type
-        System.out.println(myOtherEngine);  // Print the other engine's state
-        myEngine.go();  // Reset the fuel to max level
-        System.out.println("Remaining: " + myEngine);  // Print the engine's state
-        myEngine.refuel();  // Reset the fuel to max level
-        System.out.println("After refueling: " + myEngine);  // Print the engine's state after refueling
+        System.out.println("Out of fuel.");
     }
 }

@@ -20,9 +20,9 @@ public class Car implements CarRequirements {
      */
 
     // Constructor for the class
-    public Car(int Capacity, int seatsRemaining) {
+    public Car(int Capacity) {
         this.Capacity = Capacity;
-        this.seatsRemaining = seatsRemaining;
+        this.seatsRemaining = Capacity;
         this.Passengers = new ArrayList<>();  // Initialize the passengers list
     }
 
@@ -95,18 +95,20 @@ public class Car implements CarRequirements {
 
     // Main method to test the Car class
     public static void main(String[] args) {
-        Car myCar = new Car(4, 4);  // Car with 4 seats, initially all seats available
-
+        Car myCar = new Car(4);  // Car with 4 seats, initially all seats available
+       Passenger myPassenger = new Passenger("Jessica");
         // Add some passengers
-        myCar.addPassenger("John");
-        myCar.addPassenger("Alice");
-        myCar.addPassenger("Bob");
+        myCar.addPassenger(new Passenger("John"));
+        myCar.addPassenger(new Passenger("Alice"));
+        myCar.addPassenger(myPassenger);
+        myCar.removePassenger(myPassenger);
+    
 
         // Print the manifest
         myCar.printManifest();
 
         // Remove a passenger
-        myCar.removePassenger("Alice");
+        myCar.removePassenger(myCar.Passengers.get(1));
 
         // Print the manifest again after removal
         myCar.printManifest();

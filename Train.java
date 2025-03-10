@@ -20,14 +20,14 @@ public class Train implements TrainRequirements {
      */
 
     public Train(FuelType fuelType, double fuelCapacity, int nCars, int passengerCapacity) {
-        this.engine =new Engine(fuelType,fuelCapacity,fuelCapacity);
+        this.engine =new Engine(fuelType,fuelCapacity);
         this.cars = new ArrayList<>();
         
 
 
         // Initialize the cars
         for (int i = 0; i < nCars; i++) {
-            Car car = new Car(passengerCapacity, passengerCapacity);
+            Car car = new Car(passengerCapacity);
             cars.add(car);
         }
 
@@ -62,11 +62,11 @@ public class Train implements TrainRequirements {
      * @return The total maximum capacity of the train.
      */
     public int getMaxCapacity() {
-        int maxCapacity = 0;
+        int MaxCapacity = 0;
         for (Car car : cars) {
-            maxCapacity += car.getCapacity(); 
+            MaxCapacity += car.getCapacity(); 
         }
-        return maxCapacity;
+        return MaxCapacity;
     }
 
      /**
@@ -100,7 +100,7 @@ public class Train implements TrainRequirements {
      * @param args Command-line arguments.
      */
     public static void main(String[] args) {
-        Car myCar = new Car(4, 4);
+        Car myCar = new Car(4);
         Train myTrain = new Train(FuelType.ELECTRIC, 100.00,5,100);  // Car with 4 seats, initially all seats available
 
 
